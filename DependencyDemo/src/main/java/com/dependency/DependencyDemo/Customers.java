@@ -4,6 +4,7 @@ public class Customers {
 	private String custid;
 	private String custname;
 	private String coursename;
+	private Technologies technologies;
 
 	public Customers() {
 		super();
