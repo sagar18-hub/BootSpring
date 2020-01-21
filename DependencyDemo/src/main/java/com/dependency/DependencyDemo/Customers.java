@@ -1,14 +1,17 @@
 package com.dependency.DependencyDemo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Customers {
 	private String custid;
 	private String custname;
 	private String coursename;
+	@Autowired
 	private Technologies technologies;
 
 	public Customers() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Customers(String custid, String custname, String coursename) {
@@ -42,4 +45,16 @@ public class Customers {
 		this.coursename = coursename;
 	}
 
+	public Technologies getTechnologies() {
+		return technologies;
+	}
+
+	public void setTechnologies(Technologies technologies) {
+		this.technologies = technologies;
+	}
+
+	public void display() {
+		System.out.println("Customers Object Returned Sucessfully");
+		technologies.tech();
+	}
 }
