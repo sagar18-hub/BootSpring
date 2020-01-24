@@ -3,11 +3,16 @@
  */
 package com.example.SubmissionForm;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * @author HP
  *
  */
+@Entity 
 public class Customers {
+	@Id
 	private int cid;
 	private String cname;
 	private String cemail;
