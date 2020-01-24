@@ -3,6 +3,7 @@
  */
 package com.example.SubmissionForm;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Controller
 public class FormController {
+
+	@Autowired
+	public CustomerRepo repo;
+
+	@RequestMapping(value = "/CustomerForm")
+	// @GetMapping("/CustomerForm")
+	public String formSubmission(Customers customers) {
+		return "CustomerForm.jsp";
+
+	}
+
 	@RequestMapping(value = "/CustomerForm", method = RequestMethod.GET)
 	// @GetMapping("/CustomerForm")
 	public String formSubmission() {
@@ -28,7 +40,7 @@ public class FormController {
 	}
 
 	// @PostMapping("/details")
-	@RequestMapping(value = "/details", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/details", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(value = HttpStatus.OK)
 	public String viewdetails(@RequestParam("cid") int cid,
 			@RequestParam("cname") String cname,
