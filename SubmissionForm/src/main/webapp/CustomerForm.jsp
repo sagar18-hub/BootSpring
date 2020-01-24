@@ -7,9 +7,11 @@
 <title>Swami Samarth</title>
 </head>
 <body>
-	<form action="addCustomers">
-		<input type="text" name="cid"><br> <input type="text"
-			name="cname"><br> <input type="text" name="cemail"><br>
+	<form method="post" actions="details">
+	Enter customer ID:<input type="text" name="cid"><br> 
+Enter Customer Name:<input type="text"
+			name="cname"><br> 
+Enter Customer Email Address:<input type="text" name="cemail"><br>
 		<input type="submit"><br>
 	</form>
 </body>
