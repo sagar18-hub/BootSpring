@@ -3,15 +3,16 @@
  */
 package com.example.SubmissionForm;
 
-import javax.ws.rs.PathParam;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,7 +42,7 @@ public class FormController {
 	@RequestMapping("/getdetails")
 	public String getdetails() {
 
-		return "ViewCustomersDetails.jsp";
+		return "ViewCustomersDetails";
 
 	}
 
@@ -72,17 +73,41 @@ public class FormController {
 
 	}
 
+	/*
+	 * @RequestMapping("/customers")
+	 * 
+	 * @ResponseBody public String getCustomers() { return
+	 * repo.findAll().toString();
+	 * 
+	 * }
+	 */
 	@RequestMapping("/customers")
 	@ResponseBody
-	public String getCustomers() {
-		return repo.findAll().toString();
+	public List<Customers> getCustomers() {
+		return repo.findAll();
 
 	}
 
+	/*
+	 * @RequestMapping("/customers/{cid}")
+	 * 
+	 * @ResponseBody public String getCustomersbyId(@PathVariable("cid") int
+	 * cid) { return repo.findById(cid).toString();
+	 * 
+	 * }
+	 */
 	@RequestMapping("/customers/{cid}")
 	@ResponseBody
-	public String getCustomersbyId(@PathVariable("cid") int cid) {
-		return repo.findById(cid).toString();
+	public Optional<Customers> getCustomersbyId(@PathVariable("cid") int cid) {
+		return repo.findById(cid);
+
+	}
+
+	@PostMapping("/customers")
+	public Customers getCustomerspost(@RequestBody Customers customers) {
+		repo.save(customers);
+		// return repo.findAll();
+		return customers;
 
 	}
 }
