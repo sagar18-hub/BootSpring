@@ -15,6 +15,7 @@ public class HomeController {
 	
 	@RequestMapping("/getDetails")
 	public String home(){
+		System.out.println("The is Demo");
 		return "home.jsp";
 	}
 
